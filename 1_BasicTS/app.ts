@@ -1,24 +1,26 @@
-// default enum starts with 0
-enum role {'DEV', 'SUPPORT', 'QA', 'PO'};
-// you can assign enum value to anything, it will be counted from there
-enum role1 {'DEV'=6, 'SUPPORT', 'QA', 'PO'}
+// Union: a function that accepts any number of data types separated by |
 
-const person : {
-      "name": String;
-      "age": number;
-      "languages": string[],
-      "efficiency":[string, number ], // Tuple: store a collection of values of varied types
-      "role": number
-} = {
-      name: "Soham",
-      age: 23,
-      languages: ["TS", "JS", "React", "Node"],
-      efficiency: ['TS', 1],
-      role: role1.PO
+function add(n1: number | string, n2: number | string){
+
+      let res;
+
+      if(typeof n1 === 'number' && typeof n2 === 'number'){
+            res = n1 + n2;
+      } else {
+            res = n1.toString() + n2.toString();
+      }
+
+      return res;
 }
 
+console.log(add(10,20));
 
-console.log(person.role);
+console.log(add('10','20'));
+
+
+
+
+
 
 
 
