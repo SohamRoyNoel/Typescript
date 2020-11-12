@@ -1,20 +1,12 @@
-// CASE 1:- explicit Object type: as we are making it as Object
-// const user : Object = {
-//      name: "Soham",
-//      age: 23
-// }
-// Simple Object Type
-var user = {
+var person = {
     name: "Soham",
     age: 23,
-    loves: ['JS', 'TS', 'GQL'],
-    hates: [{
-            title: 'SSMS',
-            description: 'I dont understand'
-        },
-        {
-            title: 'JSP',
-            description: 'This is dumbs haven'
-        }]
+    languages: ["TS", "JS", "React", "Node"]
 };
-console.log(user.hates[1].title);
+for (var _i = 0, _a = person.languages; _i < _a.length; _i++) {
+    var lng = _a[_i];
+    console.log(lng.toLowerCase()); // every string function is working bcz TS knows this array is gonna be string
+}
+var arr;
+arr = [1, 2, 3, 'Js'];
+console.warn(arr);
