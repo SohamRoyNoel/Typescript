@@ -1,6 +1,8 @@
-// Union: a function that accepts any number of data types separated by |
+// Type Aliases: combine multiple data type under same hood
 
-function add(n1: number | string, n2: number | string){
+type CombineType = number | string;
+
+function add(n1: CombineType, n2: CombineType){
 
       let res;
 

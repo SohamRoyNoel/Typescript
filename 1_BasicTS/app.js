@@ -1,3 +1,4 @@
+// Type Aliases: combine multiple data type under same hood
 function add(n1, n2) {
     var res;
     if (typeof n1 === 'number' && typeof n2 === 'number') {
