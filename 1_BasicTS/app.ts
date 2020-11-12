@@ -1,35 +1,23 @@
-
-// CASE 1:- explicit Object type: as we are making it as Object
-// const user : Object = {
-//      name: "Soham",
-//      age: 23
-// }
-
-// CASE 2
-// Nested OBJECT
-interface hateList {
-      title: string;
-      description: string; 
-}
-
-// Simple Object Type
-const user : {
-      name: String;
-      age: number;
-      loves: string[], // Array as OBJECT Type
-      hates: hateList[]       // Nested OBJECT
+const person : {
+      "name": String;
+      "age": number;
+      "languages": string[]
 } = {
       name: "Soham",
       age: 23,
-      loves: ['JS', 'TS', 'GQL'],
-      hates: [{
-            title:'SSMS',
-            description: 'I dont understand'
-      },
-      {
-            title: 'JSP',
-            description: 'This is dumbs haven'
-      }]
+      languages: ["TS", "JS", "React", "Node"]
 }
 
-console.log(user.hates[1].title);
+for(const lng of person.languages){
+      console.log(lng.toLowerCase()); // every string function is working bcz TS knows this array is gonna be string
+}
+
+let arr : number[];
+arr = [1 , 2 , 3, 'Js']; // TS error
+
+console.warn(arr);
+
+let arr1 : any[];
+arr1 = [1 , 2 , 3, 'Js']; // TS error is gone as "any" works like pure JS
+
+console.warn(arr);
