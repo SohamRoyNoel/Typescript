@@ -1,23 +1,19 @@
 const person : {
       "name": String;
       "age": number;
-      "languages": string[]
+      "languages": string[],
+      "efficiency":[string, number ] // Tuple: store a collection of values of varied types
 } = {
       name: "Soham",
       age: 23,
-      languages: ["TS", "JS", "React", "Node"]
+      languages: ["TS", "JS", "React", "Node"],
+      efficiency: ['TS', 1]
 }
 
-for(const lng of person.languages){
-      console.log(lng.toLowerCase()); // every string function is working bcz TS knows this array is gonna be string
-}
+// Push is exception case that allows both string or number-as it is defined as
+// "efficiency":[string, number ], other types like boolean will be error
+person.efficiency.push('JS'); 
 
-let arr : number[];
-arr = [1 , 2 , 3, 'Js']; // TS error
+// Atleast it is throwing exception if we assign wrong type
+person.efficiency[0] = 10;
 
-console.warn(arr);
-
-let arr1 : any[];
-arr1 = [1 , 2 , 3, 'Js']; // TS error is gone as "any" works like pure JS
-
-console.warn(arr);
