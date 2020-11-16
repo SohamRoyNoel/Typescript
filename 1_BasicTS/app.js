@@ -1,13 +1,15 @@
-// Type Aliases: combine multiple data type under same hood
+// In TS we dont need to specify return type explicitly, TS inference does it for us
 function add(n1, n2) {
-    var res;
-    if (typeof n1 === 'number' && typeof n2 === 'number') {
-        res = n1 + n2;
-    }
-    else {
-        res = n1.toString() + n2.toString();
-    }
-    return res;
+    return n1 + n2;
 }
-console.log(add(10, 20));
-console.log(add('10', '20'));
+// Void and Undefined type :: void means no return type
+function printer(num) {
+    console.log(num);
+}
+function printer1(num) {
+    console.log(num);
+    return;
+}
+printer(add(10, 15));
+console.log(printer(add(10, 15))); // void
+console.log(printer1(add(10, 15))); // undefined
