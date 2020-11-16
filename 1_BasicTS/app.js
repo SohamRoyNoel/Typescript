@@ -1,8 +1,5 @@
-// In TS we dont need to specify return type explicitly, TS inference does it for us
-function add(n1, n2, cb) {
-    var x = n1 + n2;
-    cb(x);
+function throwException(message, code) {
+    throw { message: message, code: code };
 }
-console.log(add(8, 10, function (resp) {
-    console.log(resp);
-}));
+var x = throwException("Using NEVER", 108);
+console.log(x);
