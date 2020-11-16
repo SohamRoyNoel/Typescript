@@ -10,6 +10,5 @@ function printer1(num) {
     console.log(num);
     return;
 }
-printer(add(10, 15));
-console.log(printer(add(10, 15))); // void
-console.log(printer1(add(10, 15))); // undefined
+var addVals = add;
+console.log(addVals(8, 8));

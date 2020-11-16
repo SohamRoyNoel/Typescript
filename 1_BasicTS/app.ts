@@ -14,9 +14,15 @@ function printer1(num:number) : undefined{
       return;
 }
 
+// Pointing a function to variable
+let addVals = add
+console.log(addVals(8,8));
 
-printer(add(10, 15));
+// creating Error: TS inference does the auto Function as type trick
+let addVals1 = add;
+// addVals = 5; // Exception: Type 'number' is not assignable to type '(n1: number, n2: number) => number'
+//console.log(addVals1(8));
 
-console.log(printer(add(10, 15))); // void
-
-console.log(printer1(add(10, 15))); // undefined
+let variablesUser : (a:number, b:number) => number; // Function as type
+variablesUser = add
+variablesUser = printer // error
