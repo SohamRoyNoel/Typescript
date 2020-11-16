@@ -1,12 +1,19 @@
-// In TS we dont need to specify return type explicitly, TS inference does it for us
-function add(n1: number, n2:number, cb:(res: number) => void){
-      var x = n1+n2;
-      cb(x);
+// Unknown type: grants any type of values
+let x : unknown;
+
+x = 10;
+x = 'Random String';
+
+// lets see the difference between any and unknown
+// Assigning an unknown type to a string
+let y : string;
+
+//y = x; // Boom- Error(any will allow this, unknown doesnt; Thats why unknown has a little type check but any doesnt have that)
+
+// we need an additional check to prevent this
+if( typeof x === 'string'){
+      y = x // Now TS is happy
 }
 
-console.log(add(8, 10, (resp)=>{
-      console.log(resp);
-      return resp; // it doesnt bother bcz its a callback, it checks the type only
-}))
 
 
