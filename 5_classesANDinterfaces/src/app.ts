@@ -1,4 +1,4 @@
-class Department {
+abstract class Department {
   // name: string;
   // id: number;
 
@@ -30,11 +30,19 @@ class Department {
   department(this: Department){
     console.log(`Dept : ${this.name} and ${this.i}`);
   }
+
+  // ABSTRACT METHOD : a method that has only Signature : will be implemented by CHILD class
+  abstract departmentDetails(val : string) : void;
   
 }
 
 // Interface
 class ITDepartment extends Department {
+
+  // IMPLEMENTING abstract METHOD
+  departmentDetails(val: string): void {
+    console.log(`I am from Abstract Class : ${val}`)
+  }
 
   // private property that can be accessed by GETTER & SETTER
   private lastAdmin : string;
@@ -108,6 +116,6 @@ console.log("VAL from getter setter " + dept.getLastAdmin);
 // calling static method
 console.log(Department.employee('Soham Roy'));
 
-
-
+// CALLING abstract method
+dept.departmentDetails('Development Team');
 
