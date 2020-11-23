@@ -24,6 +24,9 @@ class ITDepartment extends Department {
         this.admins = admins;
         this.lastAdmin = '';
     }
+    departmentDetails(val) {
+        console.log(`I am from Abstract Class : ${val}`);
+    }
     get getLastAdmin() {
         if (this.lastAdmin) {
             return this.lastAdmin;
@@ -61,3 +64,4 @@ dept.setAdmins('Ivy');
 dept.setLastAdmin = 'Soham';
 console.log("VAL from getter setter " + dept.getLastAdmin);
 console.log(Department.employee('Soham Roy'));
+dept.departmentDetails('Development Team');
