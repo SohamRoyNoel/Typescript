@@ -39,6 +39,13 @@ class ITDepartment extends Department {
         }
         this.setAdmins(value);
     }
+    static getInstance() {
+        if (ITDepartment.instance) {
+            return this.instance;
+        }
+        this.instance = new ITDepartment(10, []);
+        return this.instance;
+    }
     setEmployee(nm) {
         if (nm === 'Soham') {
             return;
@@ -53,7 +60,7 @@ class ITDepartment extends Department {
         console.log(`Admins are ${this.admins}`);
     }
 }
-const dept = new ITDepartment(10, []);
+const dept = ITDepartment.getInstance();
 dept.getAdmins();
 console.log(dept);
 dept.department();
