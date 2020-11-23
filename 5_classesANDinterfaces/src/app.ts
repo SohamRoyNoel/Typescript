@@ -1,7 +1,8 @@
 class Department {
   // name: string;
   // id: number;
-  private employees: string[] = [];
+  // private employees: string[] = [];
+  protected employees: string[] = [];
 
   // properties defination can be restricted on constructor level also
   constructor(private name: string, public i: number) {
@@ -15,6 +16,7 @@ class Department {
 
   getEmployee(){
     console.log(this.employees);
+    
   }
 
   // this type asks exacts same blueprint
@@ -24,25 +26,80 @@ class Department {
   
 }
 
-const dept = new Department('Developer', 10);
+// Interface
+class ITDepartment extends Department {
+
+  // private property that can be accessed by GETTER & SETTER
+  private lastAdmin : string;
+
+  // GETTER & SETTER
+  get getLastAdmin(){
+    if(this.lastAdmin){
+      return this.lastAdmin;
+    }
+    throw new Error('No Admin IS created')
+  }
+
+  // this way Admin array can be established
+  set setLastAdmin(value: string){
+    if(!value){
+      throw new Error('Are you crazy! Giving me a shitty null');
+    }
+    this.setAdmins(value);
+  }
+
+  constructor(id: number, public admins: string[]){
+    super('IT', id); // calls the constructor of the base class so signature should be same
+    this.lastAdmin = '';
+  }
+
+  // Override
+  setEmployee(nm: string) {
+    if(nm === 'Soham'){
+      return;
+    }
+    this.employees.push(nm);
+  }
+
+  setAdmins(admin: string){
+    this.admins.push(admin);
+    this.lastAdmin = admin;
+  }
+
+  getAdmins(){
+    console.log(`Admins are ${this.admins}`)
+  }
+
+}
+// Version - 1 direct
+// const dept = new ITDepartment(10, ['Ivy', 'Candy']);
+
+// Version - 2 indirect
+const dept = new ITDepartment(10, []);
+
+// dept.setAdmins('Ivy');
+// dept.setAdmins('ChocoCandy');
+
+dept.getAdmins();
 
 console.log(dept);
 
 dept.department();
 
-dept.setEmployee('Anny');
-dept.setEmployee('Merry');
-
-// dept.employees[2] = 'Enrique'; // Now you have a sweet little error
+// using Override
+dept.setEmployee('Soham');
+dept.setEmployee('Candy');
 
 dept.getEmployee();
 
-// this conflict: 
-// const copyDepartment = { department: dept.department };
+// Getter - Setter (JUST CLOSING dept.setAdmins())
+// console.log(dept.getLastAdmin); // Throws error as no report is set
+dept.setAdmins('Ivy');
+dept.setLastAdmin = 'Soham';
+console.log("VAL from getter setter " + dept.getLastAdmin);
 
-// console.log(copyDepartment.department());
 
-// Now i have to pass same type
-// const copyDepartment = { name: 'Wassex', department: dept.department };
-// 
-// copyDepartment.department();
+
+
+
+
