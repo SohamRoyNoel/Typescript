@@ -5,6 +5,9 @@ class Department {
         this.i = i;
         this.employees = [];
     }
+    static employee(val) {
+        return `${val} employee is a MERN Developer`;
+    }
     setEmployee(nm) {
         this.employees.push(nm);
     }
@@ -57,3 +60,4 @@ dept.getEmployee();
 dept.setAdmins('Ivy');
 dept.setLastAdmin = 'Soham';
 console.log("VAL from getter setter " + dept.getLastAdmin);
+console.log(Department.employee('Soham Roy'));

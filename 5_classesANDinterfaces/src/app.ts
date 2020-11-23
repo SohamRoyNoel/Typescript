@@ -1,6 +1,8 @@
 class Department {
   // name: string;
   // id: number;
+
+  // Accessors
   // private employees: string[] = [];
   protected employees: string[] = [];
 
@@ -8,6 +10,11 @@ class Department {
   constructor(private name: string, public i: number) {
     // this.name = dept,
     // this.id = i
+  }
+
+  // Static
+  static employee(val: string){
+    return `${val} employee is a MERN Developer`;
   }
 
   setEmployee(nm: string) {
@@ -98,7 +105,8 @@ dept.setAdmins('Ivy');
 dept.setLastAdmin = 'Soham';
 console.log("VAL from getter setter " + dept.getLastAdmin);
 
-
+// calling static method
+console.log(Department.employee('Soham Roy'));
 
 
 
