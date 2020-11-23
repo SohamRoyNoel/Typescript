@@ -39,6 +39,9 @@ abstract class Department {
 // Interface
 class ITDepartment extends Department {
 
+  // SINGLETON Pattern:: INSTANCE property
+  private static instance: ITDepartment;
+
   // IMPLEMENTING abstract METHOD
   departmentDetails(val: string): void {
     console.log(`I am from Abstract Class : ${val}`)
@@ -63,9 +66,19 @@ class ITDepartment extends Department {
     this.setAdmins(value);
   }
 
-  constructor(id: number, public admins: string[]){
+  // we can make a constructor as private: this way we will use a STATIC method to get the ITDepartment instance :: Singleton Pattern
+  private constructor(id: number, public admins: string[]){
     super('IT', id); // calls the constructor of the base class so signature should be same
     this.lastAdmin = '';
+  }
+
+  // define the STATIC method that returns an instance of the class :: Singleton Pattern
+  static getInstance() {
+    if(ITDepartment.instance){
+      return this.instance;
+    }
+    this.instance = new ITDepartment(10, []);
+    return this.instance;
   }
 
   // Override
@@ -90,7 +103,10 @@ class ITDepartment extends Department {
 // const dept = new ITDepartment(10, ['Ivy', 'Candy']);
 
 // Version - 2 indirect
-const dept = new ITDepartment(10, []);
+// const dept = new ITDepartment(10, []);
+
+// Singleton WAY
+const dept = ITDepartment.getInstance();
 
 // dept.setAdmins('Ivy');
 // dept.setAdmins('ChocoCandy');
